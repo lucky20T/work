@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.video-container {
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.video-player video {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.video-details {
+    padding: 15px;
+}
+
+#videoTitle {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+#videoChannel, #videoStats {
+    font-size: 14px;
+    color: #606060;
+    margin: 2px 0;
+}
+
+#videoDescription {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #333;
+}
