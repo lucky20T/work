@@ -7,44 +7,27 @@
     <link rel="stylesheet" href="firstprojestcss.css">
 </head>
 <body>
-    <header>
-        <h1 class="A">
-            <br>
-            NAME OF THE CHANNEL
-            <br>
-            <br>
-        </h1>
+    <header class="header">
+        <div class="logo">
+            <a href="#index.html">MyTube</a>
+        </div>
+        <nav class="nav-links">
+            <a href="#index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button><img src="C:/WORK/git/web/asset/proi0.jpeg" alt="Search"></button>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li style="float: left;"><a href="#">top</a></li>
-            <li>
-                <form action="search_results.html" method="get" style="display: inline;"></form>
-                    <input type="text" placeholder="Search..." name="search">
-                    <button type="submit">Search</button>
-                </form>
-            </li>
-            
-        </ul>
-    </nav>
-    <div class="continer">
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-        <a href="#"><img class="image" src="C:\WORK\git\web\asset\proi0.jpeg" alt=""></a>  
-    </div>
+    <h2>
+        Topic picks
+    </h2>
+    
+    <div class="video-grid" id="video-grid"></div>      
+    
 
     <script src="firstprojestjs.js"></script>
 </body>
 </html>
-<div id="mobile_menu">…</div>
