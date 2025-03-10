@@ -10,21 +10,73 @@
 
 <body>
 
-<div class="video-container">
-    <div class="video-player">
-        <video id="videoPlayer" controls>
-            <source src="" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <header class="header">
+        <div class="logo"><a href="#">MyTube</a></div>
+    </header>
+    
+    <div class="main-container">
+        <!-- Left Ad Space -->
+        <div class="ad-space left-ad">
+            <p>Ad Space</p>
+        </div>
+    
+        <!-- Main Content Container -->
+        <div class="content-container">
+            <!-- Main Video Section -->
+            <div class="main-video">
+                <video controls autoplay>
+                    <source src="path/to/your/video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h2 class="video-title">How to Code a YouTube Clone</h2>
+                <p class="video-stats">1M views • 2 days ago</p>
+                <hr>
+    
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h3>Comments</h3>
+                    <div class="comment-form">
+                        <input type="text" id="comment-input" placeholder="Add a comment...">
+                        <button onclick="addComment()">Comment</button>
+                    </div>
+                    <ul id="comment-list"></ul>
+                </div>
+            </div>
+    
+            <!-- Recommendations Section -->
+            <aside class="recommendations">
+                <h3>Recommended</h3>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <a href="video-page.html">
+                            <img src="path/to/thumbnail1.jpg" alt="Video Thumbnail">
+                        </a>
+                        <h4>JavaScript Tricks</h4>
+                        <p>500K views • 5 days ago</p>
+                    </div>
+                    <div class="video-card">
+                        <a href="video-page.html">
+                            <img src="path/to/thumbnail2.jpg" alt="Video Thumbnail">
+                        </a>
+                        <h4>CSS Grid Tutorial</h4>
+                        <p>300K views • 1 week ago</p>
+                    </div>
+                    <div class="video-card">
+                        <a href="video-page.html">
+                            <img src="path/to/thumbnail3.jpg" alt="Video Thumbnail">
+                        </a>
+                        <h4>Mastering Flexbox</h4>
+                        <p>400K views • 3 days ago</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    
+        <!-- Right Ad Space -->
+        <div class="ad-space right-ad">
+            <p>Ad Space</p>
+        </div>
     </div>
-
-    <div class="video-details">
-        <h2 id="videoTitle">Video Title</h2>
-        <p id="videoChannel">Channel Name</p>
-        <p id="videoStats">0 views • Just now</p>
-        <p id="videoDescription">This is a sample video description.</p>
-    </div>
-</div>
 
 
 <script src="video-script.js"></script>
