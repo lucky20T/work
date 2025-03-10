@@ -159,3 +159,46 @@ body {
     border-bottom: 1px solid #ddd;
     color: #333;
 }
+/* For tablets and mobile devices */
+@media (max-width: 768px) {
+    /* Adjust grid to fit smaller screens */
+    .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    /* Stack ad spaces on top of the content */
+    .ad-space {
+        position: static;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust header for mobile */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .search-bar input {
+        width: 80%;
+    }
+}
+
+/* For smaller mobile devices (up to 480px wide) */
+@media (max-width: 480px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+}
