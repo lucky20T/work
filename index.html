@@ -8,21 +8,34 @@
 </head>
 <body>
     <header>
-        <section>
+        <h1>Hindi-Anime</h1>
+        <img class="logo-img" src="logo.jpg" alt="logo" >
+    <p>Welcome to the Hindi-Anime website! Here you can find a collection of anime content available in Hindi.</p>
+        <section class="anav">
             <div>
                 <nav>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"></a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">home</a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">top</a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">check</a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">check</a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">check</a>
+                    <a class="nai" href="#" target="_blank" rel="noopener noreferrer">check</a>
                 </nav>
             </div>
         </section>
     </header>
-    <div>
-        <img src="https://drive.google.com/uc?export=view&id=15gcHp84ouF5W0Qh3ehxmJ1_kPoEpMsm0" alt="Your Image" />
-    </div>
+    
+   
+    <section class="container">
+        <div id="data"></div>
+    </section>
+    
+    <button
+      class="refresh-btn"
+      onclick="localStorage.removeItem('resumeData'); location.reload();"
+    >
+      🔁 Refresh Resume Data
+    </button>
+    <script src="indexj.js"></script>
 </body>
 </html>
