@@ -1,16 +1,16 @@
 
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const cleared = localStorage.getItem('cleared');
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   const cleared = localStorage.getItem('cleared');
   
-    if (!cleared) {
-      localStorage.removeItem('resumeData');
-      localStorage.setItem('cleared', 'true');
-      location.reload();
-    } else {
-      localStorage.removeItem('cleared'); // Clear flag after reload
-   }
-  });
+  //   if (!cleared) {
+  //     localStorage.removeItem('resumeData');
+  //     localStorage.setItem('cleared', 'true');
+  //     location.reload();
+  //   } else {
+  //     localStorage.removeItem('cleared'); // Clear flag after reload
+  //  }
+  // });
               
   const sheetURL =
   "https://script.google.com/macros/s/AKfycbxncc_HqrZp0mbWaKtf0etswYiPVnNVfVfDgPrvRow9GWbxF_nrEg6jLsJcpISyshuzZg/exec";
