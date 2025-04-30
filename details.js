@@ -96,4 +96,17 @@ function showRecommendations(data) {
 
   document.getElementById("recommendations").innerHTML = output;
 }
+// Toggle dark mode
+const toggleBtn = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Load theme from localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+  });
              
