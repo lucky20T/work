@@ -26,6 +26,7 @@
       height: 24px;
       margin: 20px 0;
       filter: invert(100%);
+      cursor: pointer;
     }
     .main {
       flex: 1;
@@ -93,13 +94,18 @@
       font-size: 14px;
     }
   </style>
+  <script>
+    function navigate(section) {
+      alert("Navigating to " + section);
+    }
+  </script>
 </head>
 <body>
   <div class="sidebar">
-    <img src="https://img.icons8.com/ios-glyphs/30/home.png" alt="Home" />
-    <img src="https://img.icons8.com/ios-glyphs/30/user-group-man-man.png" alt="Users" />
-    <img src="https://img.icons8.com/ios-glyphs/30/documents.png" alt="Docs" />
-    <img src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png" alt="Profile" />
+    <img src="https://img.icons8.com/ios-glyphs/30/home.png" alt="Home" onclick="navigate('Home')" />
+    <img src="https://img.icons8.com/ios-glyphs/30/user-group-man-man.png" alt="Users" onclick="navigate('Users')" />
+    <img src="https://img.icons8.com/ios-glyphs/30/documents.png" alt="Docs" onclick="navigate('Documents')" />
+    <img src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png" alt="Profile" onclick="navigate('Profile')" />
   </div>
   <div class="main">
     <div class="navbar">
@@ -111,17 +117,17 @@
         <h2>Latest Anime</h2>
         <div class="anime-cards">
           <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/I_Want_to_Eat_Your_Pancreas.png" alt="I Want to Eat Your Pancreas">
+            <img src="https://via.placeholder.com/200x300?text=Anime+1" alt="Anime 1">
             <div class="card-title">I Want to Eat Your Pancreas</div>
             <div>Hindi Dubbed | 1-12 EP</div>
           </div>
           <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Suzume_film_poster.png" alt="Suzume">
+            <img src="https://via.placeholder.com/200x300?text=Anime+2" alt="Anime 2">
             <div class="card-title">Suzume</div>
             <div>Hindi Dubbed | 1-4 EP</div>
           </div>
           <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/en/0/0e/From_Up_on_Poppy_Hill.png" alt="From Up on Poppy Hill">
+            <img src="https://via.placeholder.com/200x300?text=Anime+3" alt="Anime 3">
             <div class="card-title">From Up on Poppy Hill</div>
             <div>Hindi Dubbed | 1-7 EP</div>
           </div>
