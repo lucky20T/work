@@ -1,147 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hindi Anime</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #3e3a4b;
-      color: #fff;
-    }
-    .sidebar {
-      width: 60px;
-      background: #2f2b3b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
-    }
-    .sidebar img, .sidebar svg {
-      width: 24px;
-      height: 24px;
-      margin: 20px 0;
-      filter: invert(100%);
-      cursor: pointer;
-    }
-    .main {
-      flex: 1;
-      background: #8d8a8f;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    .navbar {
-      background: #3e3a4b;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      color: #fff;
-      font-size: 24px;
-      font-weight: bold;
-      font-style: italic;
-    }
-    .navbar input {
-      margin-left: auto;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 4px;
-    }
-    .content {
-      display: flex;
-      margin-top: 20px;
-    }
-    .latest-anime {
-      flex: 3;
-    }
-    .latest-anime h2 {
-      margin-bottom: 10px;
-      color: black;
-    }
-    .anime-cards {
-      display: flex;
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      color: black;
-      padding: 10px;
-      width: 200px;
-      border-radius: 5px;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .card-title {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .popular-anime {
-      flex: 1;
-      padding-left: 20px;
-      color: black;
-    }
-    .popular-anime h3 {
-      margin-bottom: 10px;
-    }
-    .popular-anime p {
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-  </style>
-  <script>
-    function navigate(section) {
-      alert("Navigating to " + section);
-    }
-  </script>
+  <link rel="stylesheet" href="homecss.css">
 </head>
 <body>
-  <div class="sidebar">
-    <img src="https://img.icons8.com/ios-glyphs/30/home.png" alt="Home" onclick="navigate('Home')" />
-    <img src="https://img.icons8.com/ios-glyphs/30/user-group-man-man.png" alt="Users" onclick="navigate('Users')" />
-    <img src="https://img.icons8.com/ios-glyphs/30/documents.png" alt="Docs" onclick="navigate('Documents')" />
-    <img src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png" alt="Profile" onclick="navigate('Profile')" />
-  </div>
-  <div class="main">
-    <div class="navbar">
-      <span>Hindi Anime</span>
-      <input type="text" placeholder="Search...">
+  <div class="navbar">
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <div class="content">
-      <div class="latest-anime">
-        <h2>Latest Anime</h2>
-        <div class="anime-cards">
-          <div class="card">
-            <img src="https://via.placeholder.com/200x300?text=Anime+1" alt="Anime 1">
-            <div class="card-title">I Want to Eat Your Pancreas</div>
-            <div>Hindi Dubbed | 1-12 EP</div>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/200x300?text=Anime+2" alt="Anime 2">
-            <div class="card-title">Suzume</div>
-            <div>Hindi Dubbed | 1-4 EP</div>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/200x300?text=Anime+3" alt="Anime 3">
-            <div class="card-title">From Up on Poppy Hill</div>
-            <div>Hindi Dubbed | 1-7 EP</div>
+    <span>Hindi Anime</span>
+    <input type="text" placeholder="Search...">
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <img src="https://img.icons8.com/ios-glyphs/30/home.png" alt="Home" onclick="navigate('Home')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/user-group-man-man.png" alt="Users" onclick="navigate('Users')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/documents.png" alt="Docs" onclick="navigate('Documents')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png" alt="Profile" onclick="navigate('Profile')" />
+    </div>
+    <div class="main">
+      <div class="content">
+        <div class="latest-anime">
+          <h2>Latest Anime</h2>
+          <div class="anime-cards">
+            
           </div>
         </div>
-      </div>
-      <div class="popular-anime">
-        <h3>Popular Anime</h3>
-        <p>Demon Slayer | Season 1-2-3-4 | Hindi Dubbed | 1-63 EP</p>
-        <p>Jujutsu Kaisen | Season 1 | Hindi Dubbed [ORG]</p>
-        <p>Jujutsu Kaisen 0 | Anime Movie | Hindi Dubbed</p>
-        <p>[18+] Prison School | Season 1 | Hindi Dubbed | 1-13 EP</p>
-        <p>[18+] Overflow | Anime Hentai | Hindi Dubbed | 1-8 EP (Complete S01)</p>
+        <div class="popular-anime">
+          <h3>Popular Anime</h3>
+          <a href="#">Demon Slayer | Season 1-2-3-4 | Hindi Dubbed | 1-63 EP</a>
+          <a href="#">Jujutsu Kaisen | Season 1 | Hindi Dubbed [ORG]</a>
+          <a href="#">Jujutsu Kaisen 0 | Anime Movie | Hindi Dubbed</a>
+          <a href="#">Prison School | Season 1 | Hindi Dubbed | 1-13 EP</a>
+          <a href="#">Overflow | Hindi Dubbed | 1-8 EP (Complete S01)</a>
+        </div>
       </div>
     </div>
   </div>
+  
+  <script src="homejs.js"></script>
 </body>
 </html>

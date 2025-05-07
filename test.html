@@ -178,7 +178,7 @@
       const input = document.querySelector('.navbar input');
       input.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
-          alert('Searching for: ' + input.value);
+          filterData();
         }
       });
 
@@ -188,6 +188,72 @@
       hamburger.addEventListener('click', () => {
         sidebar.classList.toggle('active');
       });
+    });
+
+    const sheetURL =
+      "https://script.google.com/macros/s/AKfycbxncc_HqrZp0mbWaKtf0etswYiPVnNVfVfDgPrvRow9GWbxF_nrEg6jLsJcpISyshuzZg/exec";
+    const localData = localStorage.getItem("resumeData");
+    let fullData = [];
+
+    function renderData(data) {
+      let output = "";
+      if (data.length === 0) {
+        output = `<p style="color:red;">No results found.</p>`;
+      } else {
+        data.forEach((row) => {
+          output += `
+            <div class="card">
+              <a href="details.html?name=${encodeURIComponent(row.name)}">
+                <img class="card-img" src="${row.image}" alt="No image found">
+              </a>
+              <div class="card-text">
+                <h6>${row.name}</h6>
+                <a href="details.html?name=${encodeURIComponent(row.name)}">Watch Now</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+      document.getElementById("data").innerHTML = output;
+    }
+
+    function filterData() {
+      const searchTerm = document.querySelector('.navbar input').value.toLowerCase();
+      const filtered = fullData.filter((row) =>
+        row.name.toLowerCase().includes(searchTerm)
+      );
+      renderData(filtered);
+    }
+
+    if (localData) {
+      fullData = JSON.parse(localData);
+      renderData(fullData);
+    } else {
+      fetch(sheetURL)
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("resumeData", JSON.stringify(data));
+          fullData = data;
+          renderData(fullData);
+        })
+        .catch((err) => {
+          console.error("Error fetching data:", err);
+          document.getElementById("data").innerHTML = "⚠ Error loading data.";
+        });
+    }
+
+    document.getElementById("searchButton")?.addEventListener("click", filterData);
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleBtn?.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     });
   </script>
 </head>
@@ -212,23 +278,7 @@
       <div class="content">
         <div class="latest-anime">
           <h2>Latest Anime</h2>
-          <div class="anime-cards">
-            <a href="#" class="card">
-              <img src="https://via.placeholder.com/200x300?text=Anime+1" alt="Anime 1">
-              <div class="card-title">I Want to Eat Your Pancreas</div>
-              <div>Hindi Dubbed | 1-12 EP</div>
-            </a>
-            <a href="#" class="card">
-              <img src="https://via.placeholder.com/200x300?text=Anime+2" alt="Anime 2">
-              <div class="card-title">Suzume</div>
-              <div>Hindi Dubbed | 1-4 EP</div>
-            </a>
-            <a href="#" class="card">
-              <img src="https://via.placeholder.com/200x300?text=Anime+3" alt="Anime 3">
-              <div class="card-title">From Up on Poppy Hill</div>
-              <div>Hindi Dubbed | 1-7 EP</div>
-            </a>
-          </div>
+          <div id="data" class="anime-cards"></div>
         </div>
         <div class="popular-anime">
           <h3>Popular Anime</h3>
