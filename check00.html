@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hindi Anime</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #3e3a4b;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    .sidebar {
+      width: 60px;
+      background: #2f2b3b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      transition: transform 0.3s ease-in-out;
+    }
+    .sidebar img, .sidebar svg {
+      width: 24px;
+      height: 24px;
+      margin: 20px 0;
+      filter: invert(100%);
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .sidebar img:hover {
+      transform: scale(1.2);
+      filter: invert(50%) sepia(1) saturate(5) hue-rotate(180deg);
+    }
+    .main {
+      flex: 1;
+      background: #8d8a8f;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background: #3e3a4b;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
+      position: relative;
+    }
+    .navbar input {
+      margin-left: auto;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+    }
+    .navbar input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #fff;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+    .sidebar-toggle {
+      display: none;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .latest-anime {
+      flex: 3;
+      min-width: 300px;
+    }
+    .latest-anime h2 {
+      margin-bottom: 10px;
+      color: black;
+    }
+    .container1 {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card-img {
+      width: 100%;
+      height: auto;
+    }
+    .card-text {
+      padding: 10px;
+      text-align: center;
+    }
+    .card-text h6 {
+      margin: 0;
+    }
+    .card-text a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #ff5722;
+      text-decoration: none;
+    }
+    .popular-anime {
+      flex: 1;
+      padding-left: 20px;
+      color: black;
+      min-width: 200px;
+    }
+    .popular-anime h3 {
+      margin-bottom: 10px;
+    }
+    .popular-anime a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: black;
+      text-decoration: none;
+    }
+    .popular-anime a:hover {
+      text-decoration: underline;
+      color: #1a73e8;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .content {
+        flex-direction: column;
+      }
+      .anime-cards {
+        justify-content: center;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .sidebar {
+        position: absolute;
+        left: 0;
+        top: 60px;
+        height: calc(100% - 60px);
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .sidebar-toggle {
+        display: block;
+      }
+    }
+  </style>
+  <script>
+    function navigate(section) {
+      alert("Navigating to " + section);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.querySelector('#searchInput');
+      input.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          filterData();
+        }
+      });
+
+      const hamburger = document.querySelector('.hamburger');
+      const sidebar = document.querySelector('.sidebar');
+      hamburger.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+      });
+
+      const toggleBtn = document.getElementById('themeToggle');
+      const body = document.body;
+
+      if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+      });
+
+      const sheetURL = "https://script.google.com/macros/s/AKfycbxncc_HqrZp0mbWaKtf0etswYiPVnNVfVfDgPrvRow9GWbxF_nrEg6jLsJcpISyshuzZg/exec";
+      const localData = localStorage.getItem("resumeData");
+      let fullData = [];
+
+      function renderData(data) {
+        let output = "";
+        if (data.length === 0) {
+          output = `<p style="color:red;">No results found.</p>`;
+        } else {
+          data.forEach((row) => {
+            output += `
+              <div class="card">
+                <a href="details.html?name=${encodeURIComponent(row.name)}">
+                  <img class="card-img" src="${row.image}" alt="No image found">
+                </a>
+                <div class="card-text">
+                  <h6><a href="details.html?name=${encodeURIComponent(row.name)}">${row.name}</a></h6>
+                  <a href="details.html?name=${encodeURIComponent(row.name)}">Watch Now</a>
+                </div>
+              </div>
+            `;
+          });
+        }
+        document.getElementById("data").innerHTML = output;
+      }
+
+      function filterData() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const filtered = fullData.filter((row) =>
+          row.name.toLowerCase().includes(searchTerm)
+        );
+        renderData(filtered);
+      }
+
+      if (localData) {
+        fullData = JSON.parse(localData);
+        renderData(fullData);
+      } else {
+        fetch(sheetURL)
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("resumeData", JSON.stringify(data));
+            fullData = data;
+            renderData(fullData);
+          })
+          .catch((err) => {
+            console.error("Error fetching data:", err);
+            document.getElementById("data").innerHTML = "⚠ Error loading data.";
+          });
+      }
+
+      document.getElementById("searchButton").addEventListener("click", filterData);
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+    const cleared = localStorage.getItem('cleared');
+  
+    if (!cleared) {
+      localStorage.removeItem('resumeData');
+      localStorage.setItem('cleared', 'true');
+      location.reload();
+    } else {
+      localStorage.removeItem('cleared'); // Clear flag after reload
+   }
+  });
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <span>Hindi Anime</span>
+    <input id="searchInput" type="text" placeholder="to your anime..."  />
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <img src="https://img.icons8.com/ios-glyphs/30/home.png" alt="Home" onclick="navigate('Home')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/user-group-man-man.png" alt="Users" onclick="navigate('Users')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/documents.png" alt="Docs" onclick="navigate('Documents')" />
+      <img src="https://img.icons8.com/ios-glyphs/30/user-male-circle.png" alt="Profile" onclick="navigate('Profile')" />
+    </div>
+    <div class="main">
+      <div class="content">
+        <div class="latest-anime">
+          <h2>Latest Anime</h2>
+          <div id="data" class="container2">
+            <!-- Anime cards will appear here -->
+          </div>
+        </div>
+        <div class="popular-anime">
+          <h3>Popular Anime</h3>
+          <a href="#">Demon Slayer | Season 1-2-3-4 | Hindi Dubbed | 1-63 EP</a>
+          <a href="#">Jujutsu Kaisen | Season 1 | Hindi Dubbed [ORG]</a>
+          <a href="#">Jujutsu Kaisen 0 | Anime Movie | Hindi Dubbed</a>
+          <a href="#">Prison School | Season 1 | Hindi Dubbed | 1-13 EP</a>
+          <a href="#">Overflow | Hindi Dubbed | 1-8 EP (Complete S01)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <button
+                                class="refresh-btn"
+                                onclick="localStorage.removeItem('resumeData'); location.reload();"
+                                >
+                                 Refresh  Data
+                                </button>
+  </footer>
+</body>
+</html>
